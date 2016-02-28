@@ -1,0 +1,12 @@
+That .txt is a kind of a guide "How to Run This Lab".
+p.s. I think there is no need to write or to read this, but...
+
+-- on Win
+1. Compile executable file of "Proc_child.cpp" with lib;
+2. Then move <your_exe_name>.exe to the directory of your parent's compiled exe;
+3. Profit.
+
+-- on Linux
+1. Just compile all the .cpps in the same directory and run parent.
+
+Thx for reading!
