@@ -2,7 +2,7 @@
 
 # How to Run Labs #
 ####List of labs:####
-* <a href="#lab1">Lab 1</a>
+* [Lab 1](#lab1)
 
 #### <a name="lab1">Lab 1</a>
 
