@@ -6,6 +6,8 @@
 
 #### <a name="lab1">Lab 1</a>
 
+> **BE CAREFUL! Compile with correct name of executable file (which is set in code)**
+
 * on Win 
   - Compile executable file of `Proc_child.cpp` with lib
   - Then move `<your_exe_name>.exe` to the directory of your parent's compiled exe
