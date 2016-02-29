@@ -1,8 +1,8 @@
 
-
+<a name="top"></a>
 # How to Run Labs #
 ####List of labs:####
-* [Lab 1](#lab1)
+* [Lab 1](#lab1 "Move to Lab 1!")
 
 #### <a name="lab1">Lab 1</a>
 
@@ -15,3 +15,7 @@
   - Just compile all the .cpps in the same directory and run parent
   
 **To be continued...**
+
+-----------
+
+ **[Up!](#top "Move to the top!")**
