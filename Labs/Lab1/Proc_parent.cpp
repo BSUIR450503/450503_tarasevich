@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[])
 {
-	MyProc proc;
+	ProcessFamily proc;
 	PID pid;
 	proc.parent(pid, argc, argv);
 

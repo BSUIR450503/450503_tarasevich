@@ -21,24 +21,20 @@
 
 using namespace std;
 
-class MyProc
+class ProcessFamily
 {
 public:
 	void parent(PID&, int, char**);
 	void child(PID&, int, char**);
 };
 
-void MyProc::parent(PID &myPid, int argc, char* argv[])
+void ProcessFamily::parent(PID &myPid, int argc, char* argv[])
 {
-	/* Windows' part */
-	//---------------------------------------------------------------
-
 #ifdef _WIN32
 
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
 	// there we should enter the name of existing executable file
-	// :)))
 	TCHAR CommandLine[] = TEXT("Proc_child");
 
 	// pipe's name
@@ -116,10 +112,6 @@ void MyProc::parent(PID &myPid, int argc, char* argv[])
 
 #endif
 
-	//---------------------------------------------------------------
-
-	/* Linux part */
-	//---------------------------------------------------------------
 
 #ifdef __linux__
 
@@ -185,15 +177,10 @@ void MyProc::parent(PID &myPid, int argc, char* argv[])
 	}
 
 #endif
-
-	//---------------------------------------------------------------
 }
 
-void MyProc::child(PID &myPid, int argc, char* argv[])
+void ProcessFamily::child(PID &myPid, int argc, char* argv[])
 {
-	/* Windows' part */
-	//---------------------------------------------------------------
-
 #ifdef _WIN32
 
 	// pipe's name
@@ -229,10 +216,6 @@ void MyProc::child(PID &myPid, int argc, char* argv[])
 
 #endif
 
-	//---------------------------------------------------------------
-
-	/* Linux part */
-	//---------------------------------------------------------------
 
 #ifdef __linux__
 
@@ -260,6 +243,4 @@ void MyProc::child(PID &myPid, int argc, char* argv[])
 	usleep(5000000);
 
 #endif
-
-	//---------------------------------------------------------------
 }
