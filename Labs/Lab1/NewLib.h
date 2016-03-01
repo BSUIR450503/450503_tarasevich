@@ -52,16 +52,16 @@ void ProcessFamily::parent(PID &myPid, int argc, char* argv[])
 
 	// creating named pipe
 	myPid = CreateNamedPipe(
-		PipeName,					// имя канала
-		PIPE_ACCESS_DUPLEX,			// чтение и запись из канала
-		PIPE_TYPE_BYTE |			// передача по байтам
-		PIPE_READMODE_BYTE |		// режим чтения по байтам
-		PIPE_WAIT,					// синхронная передача
-		1,							// число экземпляров канала
-		1024 * 8,					// размер выходного буфера
-		1024 * 8,					// размер входного буфера
-		NMPWAIT_USE_DEFAULT_WAIT,	// тайм-аут клиента
-		NULL);						// защита по умолчанию
+		PipeName,					// pipe name
+		PIPE_ACCESS_DUPLEX,			// reading from and writing in pipe
+		PIPE_TYPE_BYTE |			// byte-communication
+		PIPE_READMODE_BYTE |		// byte-readmode
+		PIPE_WAIT,
+		1,							// number of copies
+		1024 * 8,					// out-buffer size
+		1024 * 8,					// in-buffer size
+		NMPWAIT_USE_DEFAULT_WAIT,	// client's timeout
+		NULL);						// default protection
 
 	if (myPid == INVALID_HANDLE_VALUE)
 	{
@@ -70,16 +70,16 @@ void ProcessFamily::parent(PID &myPid, int argc, char* argv[])
 	}
 
 	// creating a process
-	if (!CreateProcess(NULL,	// Нет имени модуля (используется командная строка).
-		CommandLine,			// Командная строка.
-		NULL,					// Дескриптор процесса не наследуемый.
-		NULL,					// Дескриптор потока не наследуемый.
-		FALSE,					// Установим наследование дескриптора в FALSE.
-		0,						// Флажков создания нет.
-		NULL,					// Используйте блок конфигурации родителя.
-		NULL,					// Используйте стартовый каталог родителя.
-		&si,					// Указатель на структуру STARTUPINFO.
-		&pi)					// Указатель на структуру PROCESS_INFORMATION.
+	if (!CreateProcess(NULL,
+		CommandLine,			// Command Line (name of process there)
+		NULL,
+		NULL,
+		FALSE,
+		0,
+		NULL,
+		NULL,
+		&si,
+		&pi)
 		)
 	{
 		cout << "CreateProcess failed. Error code: " << (int)GetLastError() << endl;
