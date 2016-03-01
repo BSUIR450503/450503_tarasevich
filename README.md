@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <a name="top"></a>
 # How to Run Labs #
@@ -19,3 +20,28 @@
 -----------
 
  **[Up!](#top "Move to the top!")**
+=======
+
+<a name="top"></a>
+# How to Run Labs #
+####List of labs:####
+* [Lab 1](#lab1 "Move to Lab 1!")
+
+#### <a name="lab1">Lab 1</a>
+
+> **BE CAREFUL! Compile with correct name of executable file (which is set in code)**
+
+* on Win 
+  - Compile executable file of `Proc_child.cpp` with lib
+  - Then move `<your_exe_name>.exe` to the directory of your parent's compiled exe
+  - Profit
+
+* on Linux 
+  - Just compile all the .cpps in the same directory and run parent
+  
+**To be continued...**
+
+-----------
+
+ **[Up!](#top "Move to the top!")**
+>>>>>>> ddd83b8d68440dcb583240af3cea7fc47a1e2c72
