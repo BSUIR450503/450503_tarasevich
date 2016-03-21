@@ -3,6 +3,7 @@
 # How to Run Labs #
 ####List of labs:####
 * [Lab 1](#lab1 "Move to Lab 1!")
+* [Lab 2](#lab2 "Move to Lab 2!")
 
 #### <a name="lab1">Lab 1</a>
 
@@ -14,6 +15,16 @@
 * on Linux 
   - Just compile all the .cpps in the same directory and run parent
   
+#### <a name="lab2">Lab 2</a>
+
+* on Win
+  - If there are secure warnings, turn them off (on Visual C++)
+
+* on Linux
+  - Install ncurses
+  - Compile with g++ (example: `g++ -o execute main.cpp -lcurses`)
+  - Run `execute` file (or your `<filename>`)
+
 **To be continued...**
 
 -----------
