@@ -192,15 +192,7 @@ void ProcessFamily::child(PID &myPid, int argc, char* argv[])
 	BytesToWrite = sizeof(int);
 
 	// opening existing pipe
-	myPid = CreateFile(
-		PipeName,	    // имя канала
-		GENERIC_READ |  // чтение и запись в канал
-		GENERIC_WRITE,
-		0,              // нет разделяемых операций 
-		NULL,           // защита по умолчанию
-		OPEN_EXISTING,  // открытие существующего канала 
-		0,              // атрибуты по умолчанию
-		NULL);          // нет дополнительных атрибутов 
+	myPid = CreateFile(PipeName, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, 0, NULL); 
 
 	ReadFile(myPid, &buff, sizeof(int), &BytesToRead, NULL);
 
