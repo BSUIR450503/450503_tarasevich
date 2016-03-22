@@ -44,11 +44,11 @@ using std::endl;
 
 void tempSleep(int);
 
-static const char * processes[] = { "1. First process  ", "2. Second process  ",
-                                    "3. Third process  ", "4. Fourth process  ",
-                                    "5. Fifth process  ", "6. Sixth process  ",
-                                    "7. Seventh process  ", "8. Eighth process  ",
-                                    "9. Ninth process  ", "10. Tenth process  " };
+static const char * processes[] = { "1. First process\r\n", "2. Second process\r\n",
+                                    "3. Third process\r\n", "4. Fourth process\r\n",
+                                    "5. Fifth process\r\n", "6. Sixth process\r\n",
+                                    "7. Seventh process\r\n", "8. Eighth process\r\n",
+                                    "9. Ninth process\r\n", "10. Tenth process\r\n" };
 
 #define Sleep tempSleep
 #define getch_noblock getchar

@@ -174,8 +174,10 @@ void LabHandle::startLab(int argNum, char **value)
 			{
 				if (numOfProcess > 0)
 				{
-					kill(process[numOfProcess - 1], SIGUSR2);
-					numOfProcess--;
+					kill(process[--numOfProcess], SIGUSR2);
+					waitpid(process[numOfProcess], NULL, 0);
+					kill(process[numOfProcess], SIGKILL);
+					waitpid(process[numOfProcess], NULL, 0);
 				}
 				break;
 			}
@@ -187,6 +189,8 @@ void LabHandle::startLab(int argNum, char **value)
 					for (; numOfProcess > 0; numOfProcess--)
 					{
 						kill(process[numOfProcess - 1], SIGUSR2);
+						waitpid(process[numOfProcess - 1], NULL, 0);
+						kill(process[numOfProcess - 1], SIGKILL);
 						waitpid(process[numOfProcess - 1], NULL, 0);
 					}
 				}
