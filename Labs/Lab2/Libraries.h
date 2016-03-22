@@ -13,6 +13,12 @@ void print(int);
 using std::cout;
 using std::endl;
 
+static const char * processes[] = { "1. First process\r\n", "2. Second process\r\n",
+                                    "3. Third process\r\n", "4. Fourth process\r\n",
+                                    "5. Fifth process\r\n", "6. Sixth process\r\n",
+                                    "7. Seventh process\r\n", "8. Eighth process\r\n",
+                                    "9. Ninth process\r\n", "10. Tenth process\r\n" };
+
 #ifdef _WIN32
 
 #include <Windows.h>
@@ -25,12 +31,6 @@ using std::endl;
 
 int getch_noblock();
 
-static const char * processes[] = { "1. First process\n", "2. Second process\n", 
-                                    "3. Third process\n", "4. Fourth process\n", 
-                                    "5. Fifth process\n", "6. Sixth process\n",
-                                    "7. Seventh process\n", "8. Eighth process\n", 
-                                    "9. Ninth process\n", "10. Tenth process\n" };
-
 #elif __linux__
 
 #include <curses.h>
@@ -39,16 +39,7 @@ static const char * processes[] = { "1. First process\n", "2. Second process\n",
 #include <sys/types.h>
 #include <sys/wait.h>
 
-using std::cout;
-using std::endl;
-
 void tempSleep(int);
-
-static const char * processes[] = { "1. First process\r\n", "2. Second process\r\n",
-                                    "3. Third process\r\n", "4. Fourth process\r\n",
-                                    "5. Fifth process\r\n", "6. Sixth process\r\n",
-                                    "7. Seventh process\r\n", "8. Eighth process\r\n",
-                                    "9. Ninth process\r\n", "10. Tenth process\r\n" };
 
 #define Sleep tempSleep
 #define getch_noblock getchar
