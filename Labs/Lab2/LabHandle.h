@@ -99,10 +99,7 @@ void LabHandle::startLab(int argNum, char **value)
 				}
 				else
 				{
-					if (!flag)
-					{
-						currentNum++;
-					}
+					currentNum++;
 				}
 				flag = false;
 				// send signal to print event
@@ -210,10 +207,7 @@ void LabHandle::startLab(int argNum, char **value)
 				}
 				else
 				{
-					if (!flag)
-					{
-						currentNum++;
-					}
+					currentNum++;
 				}
 				flag = false;
 				kill(process[currentNum - 1], SIGUSR1);
