@@ -150,7 +150,7 @@ void linux_handler(int argc, char **argv) {
 	if (shm_id < 0) {
 		if ((shm_id = shmget(key, BUFFER_SIZE, 0)) < 0) {
 			printf("shmget error\n");
-			return;
+			exit(1);
 		}
 	}
 
@@ -159,7 +159,7 @@ void linux_handler(int argc, char **argv) {
 
 	if (sem_id < 0) {
 		printf("Semaphores is not created.");
-		return;
+		exit(1);
 	}
 
 	if (argc != 2) {
@@ -167,7 +167,7 @@ void linux_handler(int argc, char **argv) {
 		int pid = fork();
 		if (pid == -1) {
 			printf("New process is not created\n");
-			exit(0);
+			exit(1);
 		} else if (pid == 0) {
 			execlp("gnome-terminal", "gnome-terminal", "-x", argv[0], "1", NULL);
 		} else {
@@ -179,18 +179,20 @@ void linux_handler(int argc, char **argv) {
 				cout << "Server: ";
 				fgets(messageToClient, BUFFER_SIZE, stdin);
 				memcpy(buffer, messageToClient, BUFFER_SIZE);
-				ReleaseSemaphore(sem_id, 0);
+				ReleaseSemaphore(sem_id, CLIENT_SEMAPHORE);
 				if (!strcmp(messageToClient, CLOSE_MESSAGE)) {
 					shmdt(buffer);
 					shmctl(shm_id, IPC_RMID, NULL);
+					system("clear");
 					return;
 				}
-				WaitSemaphore(sem_id, 1);
+				WaitSemaphore(sem_id, SERVER_SEMAPHORE);
 				char messageFromClient[BUFFER_SIZE];
 				memcpy(messageFromClient, buffer, BUFFER_SIZE);
 				if (!strcmp(messageFromClient, CLOSE_MESSAGE)) {
 					shmdt(buffer);
 					shmctl(shm_id, IPC_RMID, NULL);
+					system("clear");
 					return;
 				}
 				cout << "Client: ";
@@ -206,11 +208,12 @@ void linux_handler(int argc, char **argv) {
 		cout << "  ==================== CLIENT ====================" << endl;
 		while (1) {
 			char messageFromServer[BUFFER_SIZE];
-			WaitSemaphore(sem_id, 0);
+			WaitSemaphore(sem_id, CLIENT_SEMAPHORE);
 			memcpy(messageFromServer, buffer, BUFFER_SIZE);
 			if (!strcmp(messageFromServer, CLOSE_MESSAGE)) {
 				shmdt(buffer);
 				shmctl(shm_id, IPC_RMID, NULL);
+				system("clear");
 				return;
 			}
 			cout << "Server: ";
@@ -225,10 +228,11 @@ void linux_handler(int argc, char **argv) {
 			cout << "Client: ";
 			fgets(messageForServer, BUFFER_SIZE, stdin);
 			memcpy(buffer, messageForServer, BUFFER_SIZE);
-			ReleaseSemaphore(sem_id, 1);
+			ReleaseSemaphore(sem_id, SERVER_SEMAPHORE);
 			if (!strcmp(messageForServer, CLOSE_MESSAGE)) {
 				shmdt(buffer);
 				shmctl(shm_id, IPC_RMID, NULL);
+				system("clear");
 				return;
 			}
 		}

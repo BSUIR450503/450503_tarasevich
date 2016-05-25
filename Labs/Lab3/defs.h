@@ -16,6 +16,8 @@ const char CLOSE_MESSAGE[] = "exit\n";
 #include <sys/sem.h>
 #include <sys/types.h>
 
+#define CLIENT_SEMAPHORE 0
+#define SERVER_SEMAPHORE 1
 #define Sleep usleep
 #define SLEEP_TIME 50000
 void linux_handler(int, char**);
